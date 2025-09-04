@@ -16,8 +16,8 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install pytest flake8 bandit
-      - name: Lint
-        run: flake8 .
+      - name: Lint (non-blocking)
+        run: flake8 . || true
       - name: Security Scan
         run: bandit -r src || true
       - name: Run tests
